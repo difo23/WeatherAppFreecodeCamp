@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Simple weather APP using Alan AI and react hooks.  
 
-## Available Scripts
 
-In the project directory, you can run:
+### Step #1: Get the weather apy from:
 
-### `npm start`
+>>>[Open Weather Map](https://home.openweathermap.org )  
+ 
+ You can to create a free acount for this and get you API KEY.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+ ### Step #2: Create a free acount in Alan Conversational Voice Platform:
 
-### `npm test`
+>>>[Alan Platform](https://alan.app/ )  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm install @alan-ai/alan-sdk-web`
 
-### `npm run build`
+You can see this [JavaScript Mastery](https://www.youtube.com/c/JavaScriptMastery/about) youtube channel for more info about Ala Platform, this video [Build a Voice Controlled React News Application - Alan AI Voice Assistant](https://youtu.be/rqw3OftE5sA)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Step #3:  Study the API Weather response:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Use this example:
+```
+/ 20200816182800
+// https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=439d4b804bc8187953eb36d2a8c26a02
 
-### `npm run eject`
+{
+  "coord": {
+    "lon": -0.13,
+    "lat": 51.51
+  },
+  "weather": [
+    {
+      "id": 300,
+      "main": "Drizzle",
+      "description": "light intensity drizzle",
+      "icon": "09d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 280.32,
+    "pressure": 1012,
+    "humidity": 81,
+    "temp_min": 279.15,
+    "temp_max": 281.15
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 4.1,
+    "deg": 80
+  },
+  "clouds": {
+    "all": 90
+  },
+  "dt": 1485789600,
+  "sys": {
+    "type": 1,
+    "id": 5091,
+    "message": 0.0103,
+    "country": "GB",
+    "sunrise": 1485762037,
+    "sunset": 1485794875
+  },
+  "id": 2643743,
+  "name": "London",
+  "cod": 200
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```

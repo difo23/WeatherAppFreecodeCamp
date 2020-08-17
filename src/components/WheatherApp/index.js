@@ -5,9 +5,8 @@ import { useData } from '../../hooks/useData';
 const WheatherApp = (props) => {
 	const { data, loading } = useData();
 
-	let location = data.location;
-	let weather = data.weather;
-	console.log('Data ', location, weather);
+
+	console.log('Data ', data);
 
 	return (
 		<div>
@@ -15,29 +14,27 @@ const WheatherApp = (props) => {
 			{loading && <h1>Loading...</h1>}
 			<hr />
 
-			{!loading && (
-				<div>
+			{!loading &&
+				(
 					<div>
-						<h2>You current location is:</h2>
-						<hr />
-						<div id="latitude">
-							<h3> Latitude: </h3>
-							<p> {location.coords.latitude} </p>
-						</div>
-						<div id="longitude">
-							<h3> Longitude: </h3>
-							<p> {location.coords.longitude} </p>
+						<div>
+							<h2>You current weather location is:</h2>
+							<hr />
+							<ul>
+
+								{
+									data.reverse().map((weather, i) => {
+										return <li key={i}> {weather}</li>
+									})
+								}
+							</ul>
+
+
+							<div />
 						</div>
 					</div>
-					<h2>
-						The wheather in {weather.name} is {!weather.weather ? 'N/S' : weather.weather[0].description}:
-						<img className="color" src={!weather.weather ? 'N/S' : weather.weather[0].icon} alt="weather" />
-					</h2>
-					<hr />
-
-					<div />
-				</div>
-			)}
+				)
+			}
 		</div>
 	);
 };

@@ -1,14 +1,12 @@
-import { getLocation } from './getLocation';
 import { getWeather } from './getWeather';
 
-export const getData = async () => {
+export const getData = async (city) => {
 	const data = {
-		location: {},
 		weather: {}
 	};
 
-	data.location = await getLocation();
-	data.weather = await getWeather(data.location);
+
+	data.weather = await getWeather(city);
 
 	return data;
 };
