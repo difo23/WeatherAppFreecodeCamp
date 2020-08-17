@@ -70,6 +70,8 @@ Use this example:
 ```
 ### Step #4: Create the Alan script (sintax js):
 
+
+
 ```
 / Use this sample to create your own voice commands
 intent('What does this app do?', 'What can I do here?', 
