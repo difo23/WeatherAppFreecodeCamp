@@ -1,7 +1,7 @@
 # Simple weather APP using Alan AI and react hooks.  
 
 
-### Step #1: Get the weather apy from:
+### Step #1: Get the weather api from:
 
 >>>[Open Weather Map](https://home.openweathermap.org )  
  
