@@ -68,3 +68,93 @@ Use this example:
 }
 
 ```
+### Step #4: Create the Alan script (sintax js):
+
+```
+/ Use this sample to create your own voice commands
+intent('What does this app do?', 'What can I do here?', 
+      reply('This is a weather project.'));
+
+const API_KEY = "8606abb9387ea5abcdaba69c4b0f99e8";
+let  cityWeathers = [];
+
+// News by Source
+intent('Give me the weather from $(source* (.*))', (p) => {
+    //let NEWS_API_URL = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}`;
+    
+    
+    let city = 'london';
+    
+    if(p.source.value) {
+        city = `${p.source.value.toLowerCase()}`
+    }
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY
+		}`;
+    
+    
+    api.request(url, (error, response, body) => {
+        const  weather  = JSON.parse(body);
+        
+        if( weather.cod === '404') {
+            p.play('Sorry, please try searching for weather from a different city');
+            return;
+        }
+        
+        cityWeathers.push(`The weather in ${p.source.value} is ${weather.weather[0].description}`)
+        
+        p.play({ command: 'newWeathers', cityWeathers });
+        p.play(`Here are the (latest|recent) weather in ${p.source.value} is ${weather.weather[0].description}`);
+
+    });
+})
+```
+
+
+### Step #6: Create custom hook for get data:
+
+
+```
+import { useState, useEffect } from 'react';
+import alanBtn from '@alan-ai/alan-sdk-web';
+
+
+export const useData = () => {
+
+	const ALAN_API_KEY = '42bdba96c985129c58e0ee0505f737882e956eca572e1d8b807a3e2338fdd0dc/stage';
+
+
+	const [state, setState] = useState({
+		data: [],
+		loading: true
+
+	});
+
+	useEffect(() => {
+
+		alanBtn({
+			key: ALAN_API_KEY,
+			onCommand: ({ command, cityWeathers }) => {
+
+				switch (command) {
+					case 'newWeathers':
+
+						console.log(command, cityWeathers);
+						setState({
+							data: cityWeathers,
+							loading: false
+						})
+						break;
+
+					default:
+						break;
+				}
+			}
+		})
+	}, []);
+
+	return state;
+};
+
+
+
+```
